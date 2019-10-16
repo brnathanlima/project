@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/projects', 'ProjectsController@index');
+Route::get('/projects/create', 'ProjectsController@create');
