@@ -11,4 +11,14 @@
     <p>
         <a href="/projects/{{ $project->id }}/edit">Edit</a>
     </p>
+    @if ($project->tasks->count())
+        <hr>
+        <div>
+            <ul>
+                @foreach ($project->tasks as $task)
+                    <li>{{ $task->description }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 @endsection
