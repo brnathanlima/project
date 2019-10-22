@@ -16,7 +16,16 @@
         <div>
             <ul>
                 @foreach ($project->tasks as $task)
-                    <li>{{ $task->description }}</li>
+                    <li>
+                        <form method="POST" action="/tasks/{{ $task->id }}">
+                            @method('PATCH')
+                            @csrf
+                            <label for="task-{{ $task->id }}" class="checkbox {{ $task->completed ? 'is-complete': '' }}">
+                                <input type="checkbox" name="completed" id="task-{{ $task->id }}" onChange="this.form.submit()" {{ $task->completed ? 'checked': '' }}>
+                                {{ $task->description }}
+                            </label>
+                        </form>
+                    </li>
                 @endforeach
             </ul>
         </div>
