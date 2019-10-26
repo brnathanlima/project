@@ -33,15 +33,7 @@
     <form action="/projects/{{ $project->id }}/tasks" class="box" method="POST">
         @csrf
         <div class="field">
-            @if ($errors->any())
-                <div class="notification is-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('errors')
             <label for="description" class="label">New Task</label>
             <div class="control">
                 <input type="text" name="description" id="description" class="input {{ $errors->has('description') ? 'is-danger' : '' }}" placeholder="New Task" required>

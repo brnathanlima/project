@@ -5,28 +5,20 @@
 @section('content')
     <h1 class="title">Edit Project</h1>
 
-    @if ($errors->any())
-        <div class="notification is-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+   @include('errors')
 
     <form method="POST" action="/projects">
         @csrf
         <div class="field">
             <label for="title" class="label">Title</label>
             <div class="control">
-                <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" placeholder="Title" value="{{ old('title') }}">
+                <input type="text" class="input {{ $errors->has('title') ? 'is-danger' : '' }}" name="title" placeholder="Title" value="{{ old('title') }}" required>
             </div>
         </div>
         <div class="field">
             <label for="description" class="label">description</label>
             <div class="control">
-                <textarea name="description" id="description" cols="30" rows="10" class="textarea {{ $errors->has('description') ? 'is-danger' : ''}}">{{ old('description') }}</textarea>
+                <textarea name="description" id="description" cols="30" rows="10" class="textarea {{ $errors->has('description') ? 'is-danger' : ''}}" required>{{ old('description') }}</textarea>
             </div>
         </div>
         <div class="field">
