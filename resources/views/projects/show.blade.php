@@ -32,19 +32,21 @@
             </ul>
         </div>
     @endif
-    <form action="/projects/{{ $project->id }}/tasks" class="box" method="POST">
-        @csrf
-        <div class="field">
-            @include('errors')
-            <label for="description" class="label">New Task</label>
-            <div class="control">
-                <input type="text" name="description" id="description" class="input {{ $errors->has('description') ? 'is-danger' : '' }}" placeholder="New Task" required>
+    @can('update', $project)
+        <form action="/projects/{{ $project->id }}/tasks" class="box" method="POST">
+            @csrf
+            <div class="field">
+                @include('errors')
+                <label for="description" class="label">New Task</label>
+                <div class="control">
+                    <input type="text" name="description" id="description" class="input {{ $errors->has('description') ? 'is-danger' : '' }}" placeholder="New Task" required>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <div class="control">
-                <button type="submit" class="button is-link">Add Task</button>
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-link">Add Task</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    @endcan
 @endsection

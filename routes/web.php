@@ -23,6 +23,7 @@ Route::post('/projects', 'ProjectsController@store');
 Route::patch('/projects/{project}', 'ProjectsController@update');
 Route::delete('/projects/{project}', 'ProjectsController@destroy'); */
 
+// Route::resource('/projects', 'ProjectsController')->middleware('can:update,project');
 Route::resource('/projects', 'ProjectsController');
 
 Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
